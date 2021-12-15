@@ -16,23 +16,31 @@ char wAtbash[WORD];
 char wAtbashReverse[WORD];
 
 
-void AtbashSequences() {
+void
+AtbashSequences ()
+{
     int wordLength = 0;
-    for (int i = 0; i < maxLength; i++) {
+    for (int i = 0; i < maxLength; i++)
+    {
         at[i] = 0;
     }
 
-    for (int i = 0; i < WORD; i++) {
-        if (w[i] >= A && w[i] <= Z) {
+    for (int i = 0; i < WORD; i++)
+    {
+        if (w[i] >= A && w[i] <= Z)
+        {
             wAtbash[i] = A - w[i] + Z;
             wordLength++;
-        } else if (w[i] >= a && w[i] <= z) {
+        }
+        else if (w[i] >= a && w[i] <= z)
+        {
             wAtbash[i] = a - w[i] + z;
             wordLength++;
         }
     }
 
-    for (int i = 0; i < wordLength; i++) {
+    for (int i = 0; i < wordLength; i++)
+    {
         wAtbashReverse[i] = wAtbash[wordLength - i - 1];
     }
 
@@ -44,66 +52,133 @@ void AtbashSequences() {
     // AOCA, amountOfCharsAdded, amount of chars added to the in a curr word.
     // newTextLength length of the output text -> MAX 2048
 
-    int currWordSP = 0;
-    int currWordEP = 0;
+    int start = 0;
+    int end = wordLength;
+    int curr = 0;
     int AOCA = 0;
     int newTextLength = 0;
+    int numOfSpaces = 0;
+    // char[wordLength] checkWord;
+    int counter = 0;
+    int lastAdded = 0;
+    int lastAddedP = 0;
+    int firstTime = 0;
+    int index = 0;
+    int g = 0;
+    int spaces;
 
-    while (currWordSP < TXT) {// && currWordSP < currWordEP){
-        // SPACE ascii value = 32
-        // A-Z = 65-90
-        // a-z = 97-122
-        if ((t[currWordSP] > 64 && t[currWordSP] < 91) ||
-            (t[currWordSP] > 96 && t[currWordSP] < 123)) {// ||
-            //(AOCA != 0 && t[currWordSP] == 32)){
-            while (AOCA < wordLength) {
-                //int i = 0;
-                // Upper case
-                if ((t[currWordSP] > 64 && t[currWordSP] < 91) ||
-                    (AOCA != 0 && t[currWordSP] == 32)) {
-                    // wAtBash
-                    if ((wAtbash[AOCA] == t[currWordSP]) ||
-                        (AOCA != 0 && t[currWordSP] == 32)) {
-                        at[currWordSP] = t[currWordSP];
-                        currWordSP++;
-                        AOCA++;
+    while (start < TXT && end < TXT && newTextLength < 9){
+        // if(newTextLength == 8){
+        //     int i = 0;
+
+        // }
+        if ((t[curr] > 64 && t[curr] < 91) ||
+            (t[curr] > 96 && t[curr] < 123) || (t[curr] == 32)){
+            if(curr == 10){
+                g = 0;
+            }
+            curr = start;
+            counter = 0;
+            while (counter < wordLength){
+                g = t[curr];
+                if ((t[curr] > 64 && t[curr] < 91) ||
+                    (t[curr] > 96 && t[curr] < 123) || (t[curr] == 32)){
+                    if(t[curr] == wAtbash[counter]){
+                        curr++;
+                        counter++;
                     }
-                        // wAtbashReverse
-                    else if ((wAtbashReverse[AOCA] == t[currWordSP]) ||
-                             (AOCA != 0 && t[currWordSP] == 32)) {
-                        at[currWordSP] = t[currWordSP];
-                        currWordSP++;
-                        AOCA++;
+                    else if(t[curr] == 32 && counter != 0){
+                        curr++;
+                    }
+                    else {
+                        counter = 0;
+                        break;
                     }
                 }
-                    // Lower case
-                else if ((t[currWordSP] > 64 && t[currWordSP] < 91) ||
-                         (AOCA != 0 && t[currWordSP] == 32)) {
-                    // wAtBash
-                    if ((wAtbash[AOCA] == t[currWordSP]) ||
-                        (AOCA != 0 && t[currWordSP] == 32)) {
-                        at[currWordSP] = t[currWordSP];
-                        currWordSP++;
-                        AOCA++;
-                    }
-                        // wAtbashReverse
-                    else if ((wAtbashReverse[AOCA] == t[currWordSP]) ||
-                             (AOCA != 0 && t[currWordSP] == 32)) {
-                        at[currWordSP] = t[currWordSP];
-                        currWordSP++;
-                        AOCA++;
-                    }
+                else {
+                    curr++;
+                    break;
                 }
             }
-            at[currWordSP] = '~';
-            currWordSP++;
-            AOCA = 0;
-        } else {
-            currWordSP++;
+            if (counter == wordLength){
+                int i = 0;
+                while (start < curr){
+                    if(t[start] == wAtbash[i]){
+                        at[start] = t[start];
+                        printf("%c", at[start]);
+                        start++;
+                        i++;
+                        newTextLength++;
+                    }
+                    else if (t[start] == 32){
+                        at[start] = t[start];
+                        printf("%c", at[start]);
+                        start++;
+                        newTextLength++;
+                    }
+                }
+                at[start] = '~';
+                newTextLength++;
+                printf("%c", at[start]);
+            }
+
+
+
+            start = curr;
+            counter = 0;
+            while (counter < wordLength){
+                g = t[curr];
+                if ((t[curr] > 64 && t[curr] < 91) ||
+                    (t[curr] > 96 && t[curr] < 123) || (t[curr] == 32)){
+                    if(t[curr] == wAtbashReverse[counter]){
+                        curr++;
+                        counter++;
+                    }
+                    else if(t[curr] == 32 && counter != 0){
+                        curr++;
+                    }
+                    else {
+                        counter = 0;
+                        break;
+                    }
+                }
+                else {
+                    curr++;
+                    break;
+                }
+            }
+            if (counter == wordLength){
+                int i = 0;
+                while (start < curr){
+                    if(t[start] == wAtbashReverse[i]){
+                        at[start] = t[start];
+                        printf("%c", at[start]);
+                        start++;
+                        i++;
+                        newTextLength++;
+                    }
+                    else if (t[start] == 32){
+                        at[start] = t[start];
+                        printf("%c", at[start]);
+                        start++;
+                        newTextLength++;
+                    }
+                }
+                at[start] = '~';
+                newTextLength++;
+                printf("%c", at[start]);
+            }
+            curr++;
+            start = curr;
+        }
+        else  {
+            curr++;
+            start = curr;
         }
     }
-    newTextLength = currWordSP;
+
     printf("Atbash Sequences : ");
+    printf("%d", newTextLength);
     int i = 0;
     while (i < newTextLength) {
         printf("%c", at[i]);
