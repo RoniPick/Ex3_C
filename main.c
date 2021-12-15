@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include "stringlib.h"
 
 #define WORD 30
@@ -37,7 +36,7 @@ void initialize(){
         w[temp] = input;
         temp++;
     }
-    wordLength=temp;
+    wordLength=temp-1;
 
     if(temp<30){
         while(temp<30){

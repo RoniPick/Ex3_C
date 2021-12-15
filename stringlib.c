@@ -3,15 +3,15 @@
 
 #define TXT 1024
 #define WORD 30
-#define maxLength 2048 // for the length of the array of the GematriaSequences +1 for the end of the word. (if we get a word with only 1 letter and a text with 1024 times the same letter of the word, we need to have space for 1024 times the letter plub 1023 times the sequence "~"
+#define maxLength 2048 // for the length of the array *2 of the GematriaSequences. (if we get a word with only 1 letter and a text with 1024 times the same letter of the word, we need to have space for 1024 times the letter and 1024 times the sequence "~")
 #define A 65
 #define Z 90
 #define a 97
 #define z 122
 
-char t[TXT];
-char w[WORD];
-char ABC[26];
+//char t[TXT];
+//char w[WORD];
+//char ABC[26];
 char g[maxLength]; // for the gematria function's output
 char at[maxLength]; // for the atbash function's output
 char an[maxLength]; // for the anagram function output
@@ -116,143 +116,6 @@ void AtbashSequences() {
 }
 
 
-
-
-
-
-
-
-
-
-//    int wordSum = sum(tAtbash);
-//    int start = 0;
-//    int end = 0;
-//    int size=0;
-//    int cur=0;
-//    int l=0;
-//
-//    while(start<TXT && end<TXT){// if its in the range of 'a'-'z' ro 'A'-'Z'
-//        size=end-start;
-//        if(size==0){
-//            if(t[start]>64 && t[start]<91 || t[start]>96 && t[start]<123){
-//                for(int i=0; i<26; i++){
-//                    if(t[start] == ABC[i] || t[start] == ABC[i]+32)
-//                        counter+=i+1;
-//                }
-//            }
-//            if(counter == wordSum){
-//                if(t[start] == tAtbash[0]){//the length of the word is 1 - only 1 char
-//                    at[l] = t[start];
-//                    l++;
-//                    at[l] = '~';
-//                    l++;
-//                    start++;
-//                    end = start;
-//                    counter = 0;
-//                }
-//            }
-//            else if(counter>wordSum){
-//                start++;
-//                end = start;
-//                counter = 0;
-//            }
-//            else{
-//                end++;
-//            }
-//        }
-//        else{
-//            if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123 || t[end] == ' '){
-//                for(int i=0; i<26; i++){
-//                    if(t[end] == ABC[i] || t[end] == ABC[i]+32)
-//                        counter+=i+1;
-//                }
-//
-//                if(counter == wordSum){
-//                    if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123 || t[end] == ' '){
-//                        int temp = start;
-//                        while(temp<=end){
-//                            if(t[temp] == tAtbash[cur]){
-//                                cur++;
-//                                temp++;
-//                            }
-//                            else if(t[temp] == ' '){
-//                                temp++;
-//                            }
-//                        }
-//
-//                        if(cur==counter){
-//                            temp = start;
-//                            while(temp<=end){
-//                                at[l] = t[temp];
-//                                l++;
-//                                temp++;
-//                            }
-//                        }
-//
-//                        int back = start;
-//                        while(back<=end){
-//                            if(t[back] == tAtbashReverse[cur]){
-//                                cur++;
-//                                back++;
-//                            }
-//                            else if(t[back] == ' '){
-//                                back++;
-//                            }
-//                        }
-//
-//                        if(cur==counter){
-//                            back= start;
-//                            while(back<=end){
-//                                at[l] = t[back];
-//                                l++;
-//                                back++;
-//                            }
-//                        }
-//                        at[l] = '~';
-//                        l++;
-//                    }
-//                    start++;
-//                    end = start;
-//                    counter = 0;
-//                }
-//                else if(counter>wordSum){
-//                    start++;
-//                    end = start;
-//                    counter = 0;
-//                }
-//                else{
-//                    end++;
-//                }
-//
-//
-//            }
-//            else{
-//                start++;
-//                end=start;
-//            }
-//
-//
-//        }
-//
-//    }
-//
-//    l--;
-//    at[l] = '#';
-//    printAtbashArray();
-//
-
-//}
-
-//void printAtbashArray(){
-//    printf("Atbash Sequences: ");
-//    int i=0;
-//    while(at[i]!='#'){
-//        printf("%c", at[i]);
-//        i++;
-//    }
-//    printf("\n");
-//}
-
 void GematriaSequences(char *w, char *t, char *ABC){
     for(int i=0; i<maxLength; i++){
         g[i] = 0;
@@ -293,7 +156,7 @@ void GematriaSequences(char *w, char *t, char *ABC){
             }
         }
         else{
-            if(counter==0){
+            if(counter==0){ // if the size of the word is at least 2 chars but the chars are not letters e.g. ' ' or '/' so we restart the counting
                 start++;
                 end = start;
             }
@@ -304,6 +167,7 @@ void GematriaSequences(char *w, char *t, char *ABC){
                         counter+=i+1;
                 }
             }
+
             if(counter == wordSize){
                 if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){
                     int temp = start;
@@ -408,7 +272,7 @@ void AnagramSequences(char *w, char *t, char *ABC, int wordLength){
     }
 
     l--;
-     printf("Anagram Sequences: ");
+    printf("Anagram Sequences: ");
     int i=0;
     while(i<l){
         printf("%c", an[i]);
