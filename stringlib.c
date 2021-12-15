@@ -253,7 +253,7 @@ void AtbashSequences() {
 //    printf("\n");
 //}
 
-void GematriaSequences(){
+void GematriaSequences(char *w, char *t, char *ABC){
     for(int i=0; i<maxLength; i++){
         g[i] = 0;
     }
@@ -343,7 +343,7 @@ void GematriaSequences(){
 
 }
 
-void AnagramSequences(int wordLength){
+void AnagramSequences(char *w, char *t, char *ABC, int wordLength){
     for(int i=0; i<maxLength; i++){
         an[i] = 0;
     }
@@ -414,7 +414,6 @@ void AnagramSequences(int wordLength){
         printf("%c", an[i]);
         i++;
     }
-    printf("\n");
 
 }
 

@@ -9,12 +9,11 @@ void initialize();
 
 int sum(char *w);
 
-void GematriaSequences();
-
+void GematriaSequences(char *w, char *t, char *ABC);
 
 void AtbashSequences();
 
-void AnagramSequences(int wordLength);
+void AnagramSequences(char *w, char *t, char *ABC, int wordLength);
 
 
 
