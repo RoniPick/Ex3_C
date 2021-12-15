@@ -210,6 +210,11 @@ void GematriaSequences(){
             }
         }
         else{
+            if(counter==0){
+                start++;
+                end = start;
+            }
+
             if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){
                 for(int i=0; i<26; i++){
                     if(t[end] == ABC[i] || t[end] == ABC[i]+32)
@@ -245,20 +250,16 @@ void GematriaSequences(){
     }
 
     l--;
-    g[l] = '#';
-    printArray();
-
-}
-
-void printArray(){
     printf("Gematria Sequences: ");
     int i=0;
-    while(g[i]!='#'){
+    while(i<l){
         printf("%c", g[i]);
         i++;
     }
     printf("\n");
+
 }
+
 
 int sum(char *w){
     int counter = 0;

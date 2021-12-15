@@ -11,7 +11,7 @@ int sum(char *w);
 
 void GematriaSequences();
 
-void printArray();
+//void printArray(int l);
 
 void AtbashSequences();
 
