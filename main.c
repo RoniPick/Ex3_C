@@ -7,12 +7,14 @@
 char t[TXT];
 char w[WORD];
 char ABC[26];
+int wordLength;
 
 int main(void){
 
     initialize();
-
+    GematriaSequences()
     AtbashSequences();
+    AnagramSequences(int wordLength);
 
 
     return 0;
@@ -35,6 +37,7 @@ void initialize(){
         w[temp] = input;
         temp++;
     }
+    wordLength=temp;
 
     if(temp<30){
         while(temp<30){
@@ -49,6 +52,7 @@ void initialize(){
         t[cur] = input;
         cur++;
     }
+
 
     if(cur<1024){
         while(cur<1024){

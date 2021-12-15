@@ -11,11 +11,11 @@ int sum(char *w);
 
 void GematriaSequences();
 
-//void printArray(int l);
 
 void AtbashSequences();
 
-void printAtbashArray();
+void AnagramSequences(int wordLength);
+
 
 
 #endif //EX3_STRINGLIB_H
