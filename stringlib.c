@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "stringlib.h"
 
 #define TXT 1024
 #define WORD 30
@@ -9,9 +9,6 @@
 #define a 97
 #define z 122
 
-//char t[TXT];
-//char w[WORD];
-//char ABC[26];
 char g[maxLength]; // for the gematria function's output
 char at[maxLength]; // for the atbash function's output
 char an[maxLength]; // for the anagram function output

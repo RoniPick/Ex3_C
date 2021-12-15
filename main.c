@@ -11,9 +11,11 @@ int wordLength;
 int main(void){
 
     initialize();
-    GematriaSequences(char *w, char *t, char *ABC)
+
+
+    GematriaSequences(w, t, ABC)
     AtbashSequences();
-    AnagramSequences(char *w, char *t, char *ABC, int wordLength);
+    AnagramSequences(w, t, ABC, int wordLength);
 
 
     return 0;
