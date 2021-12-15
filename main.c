@@ -13,7 +13,7 @@ int main(void){
     initialize();
     GematriaSequences(char *w, char *t, char *ABC)
     AtbashSequences();
-    AnagramSequences(w[WORD], t[TXT], ABC[26], int wordLength);
+    AnagramSequences(char *w, char *t, char *ABC, int wordLength);
 
 
     return 0;
