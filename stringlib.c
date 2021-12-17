@@ -12,7 +12,125 @@
 #define z 122
 
 
+//a function that calculate the gimatric value of the given word
+int sum(char w[], char ABC[]){
+    int counter = 0;
+    for(int i=0; i<30; i++){
+        for(int j=0; j<26; j++){
+            if(w[i] == ABC[j] || w[i] == ABC[j]+32)
+                counter+=j+1;
+        }
+    }
+    //we add +1 to the number because the array starts with 0 but a=A=1, b=B=2 and so on, so we add 1 to get the real gematric value;
+
+    return counter;
+
+}
+
+
+//////////////1//////////////
+void GematriaSequences(char w[], char t[], char ABC[]){
+    int g[maxLength];// for the gematria function's output
+
+    for(int i=0; i<maxLength; i++){
+        g[i] = 0;
+    }
+
+    int start, end;
+    int l=0;
+    int counter=0;
+    int size = 0; // for the end-start length
+    int wordSize = sum(w, ABC); // the word's gimatric sum
+    start = 0;
+    end = start;
+    while(start<TXT && end<TXT){// if it's in the range of 'a'-'z' ro 'A'-'Z'
+        size=end-start;
+        if(size==0){
+            if(t[start]>64 && t[start]<91 || t[start]>96 && t[start]<123){
+                for(int i=0; i<26; i++){
+                    if(t[start] == ABC[i] || t[start] == ABC[i]+32)
+                        counter+=i+1;
+                }
+            }
+            if(counter == wordSize){
+                g[l] = t[start];
+                l++;
+                g[l] = '~';
+                l++;
+                start++;
+                end = start;
+                counter = 0;
+            }
+            else if(counter>wordSize){
+                start++;
+                end = start;
+                counter = 0;
+            }
+            else{
+                end++;
+            }
+        }
+        else{
+            if(counter==0){ // if the size of the word is at least 2 chars but the chars are not letters e.g. ' ' or '/' so we restart the counting
+                start++;
+                end = start;
+            }
+
+            if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){
+                for(int i=0; i<26; i++){
+                    if(t[end] == ABC[i] || t[end] == ABC[i]+32)
+                        counter+=i+1;
+                }
+            }
+
+            if(counter == wordSize){
+                if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){
+                    int temp = start;
+                    while(temp<=end){
+                        g[l] = t[temp];
+                        l++;
+                        temp++;
+                    }
+                    g[l] = '~';
+                    l++;
+                }
+                start++;
+                end = start;
+                counter = 0;
+            }
+            else if(counter>wordSize){
+                start++;
+                end = start;
+                counter = 0;
+            }
+            else{
+                end++;
+            }
+
+        }
+
+    }
+
+    l--;
+    printf("Gematria Sequences: ");
+    int i=0;
+    while(i<l){
+        printf("%c", g[i]);
+        i++;
+    }
+    printf("\n");
+
+}
+
+
+
+//////////////2//////////////
 void AtbashSequences(char w[], char t[]) {
+    // wordLength length of the word
+    // wAtbash[] original word at atBash language
+    // wAtbashReverse[] original word at atBash language but reversed
+    // newTextLength length of the output text -> MAX 2048
+
     int at[maxLength]; // for the atbash function's output
     int wAtbash[WORD];
     int wAtbashReverse[WORD];
@@ -36,11 +154,6 @@ void AtbashSequences(char w[], char t[]) {
     for (int i = 0; i < wordLength; i++) {
         wAtbashReverse[i] = wAtbash[wordLength - i - 1];
     }
-
-    // wordLength length of the word
-    // wAtbash[] original word at atBash language
-    // wAtbashReverse[] original word at atBash language but reversed
-    // newTextLength length of the output text -> MAX 2048
 
     int start = 0;
     int end = wordLength;
@@ -151,7 +264,6 @@ void AtbashSequences(char w[], char t[]) {
 
     newTextLength--;
     printf("Atbash Sequences: ");
-    printf("%d", newTextLength);
     int i = 0;
     while (i < newTextLength) {
         printf("%c", at[i]);
@@ -253,6 +365,7 @@ void GematriaSequences(char w[], char t[], char ABC[]){
 
 }
 
+//////////////3//////////////
 void AnagramSequences(char w[], char t[], char ABC[], int wordLength){
     int an[maxLength]; // for the anagram function output
 
@@ -329,16 +442,4 @@ void AnagramSequences(char w[], char t[], char ABC[], int wordLength){
 
 }
 
-int sum(char w[], char ABC[]){
-    int counter = 0;
-    for(int i=0; i<30; i++){
-        for(int j=0; j<26; j++){
-            if(w[i] == ABC[j] || w[i] == ABC[j]+32)
-                counter+=j+1;
-        }
-    }
 
-
-    return counter;
-
-}
