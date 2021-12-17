@@ -436,5 +436,3 @@ void AnagramSequences(char w[], char t[], char ABC[], int wordLength){
     }
 
 }
-
-
