@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-void initialize(char w[], char t[], char ABC[]);
+int initialize(char w[], char t[], char ABC[]);
 
 int sum(char w[], char ABC[]);
 

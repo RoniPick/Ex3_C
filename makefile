@@ -22,4 +22,4 @@ lib.a: stringlib.o
 .PHONY: clean all
 #make clean
 clean:
-	rm -f *.o *.a
+	rm -f *.o *.a stringProg
