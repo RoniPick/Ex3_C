@@ -3,15 +3,15 @@
 
 #include <stdio.h>
 
-void initialize();
+void initialize(char w[], char t[], char ABC[]);
 
-int sum(char *w);
+int sum(char w[], char ABC[]);
 
-void GematriaSequences(char *w, char *t, char *ABC);
+void GematriaSequences(char w[], char t[], char ABC[]);
 
-void AtbashSequences();
+void AtbashSequences(char w[], char t[]);
 
-void AnagramSequences(char *w, char *t, char *ABC, int wordLength);
+void AnagramSequences(char w[], char t[], char ABC[], int wordLength);
 
 
 

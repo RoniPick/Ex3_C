@@ -1,28 +1,15 @@
 #include <stdio.h>
-#include "stringlib.h"
+#include <stdlib.h>
+#include "stringlib.c"
 
 #define WORD 30
 #define TXT 1024
-char t[TXT];
-char w[WORD];
-char ABC[26];
+
 int wordLength;
 
-int main(void){
-
-    initialize();
 
 
-    GematriaSequences(w, t, ABC)
-    AtbashSequences();
-    AnagramSequences(w, t, ABC, int wordLength);
-
-
-    return 0;
-}
-
-
-void initialize(){
+void initialize(char w[], char t[], char ABC[]){
 
     int c = 65; //ASCII value of 'A'
     for (int i = 0; i < 26; i++) { //filling the array with the ASCII value of the ALPHABET
@@ -30,8 +17,8 @@ void initialize(){
         c++;
     }
 
-    char input;
-    int temp=0;
+    char input = 0;
+    int temp = 0;
 
     while(input!=' ' && input!='\t' && input!='\n'){
         scanf("%c", &input);
@@ -65,4 +52,23 @@ void initialize(){
 }
 
 
+
+
+
+int main(void){
+
+    char t[TXT];
+    char w[WORD];
+    char ABC[26];
+
+    initialize(w, t, ABC);
+
+
+    GematriaSequences(w, t, ABC)
+    AtbashSequences(w, t);
+    AnagramSequences(w, t, ABC, wordLength);
+
+
+    return 0;
+}
 
