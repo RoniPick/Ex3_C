@@ -12,6 +12,7 @@
 #define z 122
 
 
+
 //a function that calculate the gimatric value of the given word
 int sum(char w[], char ABC[]){
     int counter = 0;
@@ -26,6 +27,7 @@ int sum(char w[], char ABC[]){
     return counter;
 
 }
+
 
 
 //////////////1//////////////
@@ -435,5 +437,3 @@ void AnagramSequences(char w[], char t[], char ABC[], int wordLength){
     }
 
 }
-
-
