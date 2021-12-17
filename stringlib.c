@@ -12,6 +12,7 @@
 #define z 122
 
 
+
 //a function that calculate the gimatric value of the given word
 int sum(char w[], char ABC[]){
     int counter = 0;
