@@ -378,7 +378,7 @@ void AnagramSequences(char w[], char t[], char ABC[], int wordLength){
     int l=0;
     int counter=0;
     int size = 0; // for the end-start length
-    int wordSize = sum(w); // the word's gimatric sum
+    int wordSize = sum(w, ABC); // the word's gimatric sum
     while(start<TXT && end<TXT){
         size = end-start;
         if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){

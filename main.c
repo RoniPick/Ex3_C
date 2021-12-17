@@ -64,7 +64,7 @@ int main(void){
     initialize(w, t, ABC);
 
 
-    GematriaSequences(w, t, ABC)
+    GematriaSequences(w, t, ABC);
     AtbashSequences(w, t);
     AnagramSequences(w, t, ABC, wordLength);
 
