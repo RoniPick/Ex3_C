@@ -55,6 +55,8 @@ void initialize(char w[], char t[], char ABC[]){
 
 
 
+
+
 int main(void){
 
     char t[TXT];
