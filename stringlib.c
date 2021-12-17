@@ -28,6 +28,7 @@ int sum(char w[], char ABC[]){
 }
 
 
+
 //////////////1//////////////
 void GematriaSequences(char w[], char t[], char ABC[]){
     int g[maxLength];// for the gematria function's output
