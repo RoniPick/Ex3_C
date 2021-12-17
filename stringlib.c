@@ -46,7 +46,7 @@ void GematriaSequences(char w[], char t[], char ABC[]){
     while(start<TXT && end<TXT){// if it's in the range of 'a'-'z' ro 'A'-'Z'
         size=end-start;
         if(size==0){
-            if(t[start]>64 && t[start]<91 || t[start]>96 && t[start]<123){
+            if((t[start]>64 && t[start]<91) || (t[start]>96 && t[start]<123)){
                 for(int i=0; i<26; i++){
                     if(t[start] == ABC[i] || t[start] == ABC[i]+32)
                         counter+=i+1;
@@ -76,7 +76,7 @@ void GematriaSequences(char w[], char t[], char ABC[]){
                 end = start;
             }
 
-            if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){
+            if((t[end]>64 && t[end]<91) || (t[end]>96 && t[end]<123)){
                 for(int i=0; i<26; i++){
                     if(t[end] == ABC[i] || t[end] == ABC[i]+32)
                         counter+=i+1;
@@ -84,7 +84,7 @@ void GematriaSequences(char w[], char t[], char ABC[]){
             }
 
             if(counter == wordSize){
-                if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){
+                if((t[end]>64 && t[end]<91) || (t[end]>96 && t[end]<123)){
                     int temp = start;
                     while(temp<=end){
                         g[l] = t[temp];
@@ -375,7 +375,7 @@ void AnagramSequences(char w[], char t[], char ABC[], int wordLength){
     int wordSize = sum(w, ABC); // the word's gimatric sum
     while(start<TXT && end<TXT){
         size = end-start;
-        if(t[end]>64 && t[end]<91 || t[end]>96 && t[end]<123){
+        if((t[end]>64 && t[end]<91) || (t[end]>96 && t[end]<123)){
             for(int i=0; i<26; i++){
                 if(t[end] == ABC[i] || t[end] == ABC[i]+32)
                     counter+=i+1;
