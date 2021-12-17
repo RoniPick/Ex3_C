@@ -41,6 +41,9 @@ void initialize(char w[], char t[], char ABC[]){
         cur++;
     }
 
+    if(input == '~')
+        break;
+
 
     if(cur<1024){
         while(cur<1024){
