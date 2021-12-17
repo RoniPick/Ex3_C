@@ -191,21 +191,18 @@ void AtbashSequences(char w[], char t[]) {
                 while (start < curr){
                     if(t[start] == wAtbash[i]){
                         at[newTextLength] = t[start];
-                        printf("%c", at[newTextLength]);
                         start++;
                         i++;
                         newTextLength++;
                     }
                     else if (t[start] == 32){
                         at[newTextLength] = t[start];
-                        printf("%c", at[newTextLength]);
                         start++;
                         newTextLength++;
                     }
                 }
                 at[newTextLength] = '~';
                 newTextLength++;
-                printf("%c", at[start]);
             }
 
 
@@ -237,21 +234,18 @@ void AtbashSequences(char w[], char t[]) {
                 while (start < curr){
                     if(t[start] == wAtbashReverse[i]){
                         at[newTextLength] = t[start];
-                        printf("%c", at[newTextLength]);
                         start++;
                         i++;
                         newTextLength++;
                     }
                     else if (t[start] == 32){
                         at[newTextLength] = t[start];
-                        printf("%c", at[newTextLength]);
                         start++;
                         newTextLength++;
                     }
                 }
                 at[newTextLength] = '~';
                 newTextLength++;
-                printf("%c", at[newTextLength]);
             }
             curr++;
             start = curr;
