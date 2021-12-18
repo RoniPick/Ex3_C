@@ -35,7 +35,6 @@ int initialize(char w[], char t[], char ABC[]){
     }
 
     int cur = 0;
-//    int flag = 0;
     while (input != '~') {
         scanf("%c", &input);
         t[cur] = input;
@@ -63,20 +62,15 @@ int main(void){
     char w[WORD];
     char ABC[26];
 
-//    int ans = initialize(w, t, ABC);
 
     initialize(w, t, ABC);
-//    if(ans == 0){
-//        GematriaSequences(w, t, ABC);
-//        AtbashSequences(w, t);
-//        AnagramSequences(w, t, ABC, wordLength);
-//        return 1;
-//    }
+
+
     GematriaSequences(w, t, ABC);
     AtbashSequences(w, t);
     AnagramSequences(w, t, ABC, wordLength);
 
 
-return 0;
+    return 0;
 }
 

@@ -1,6 +1,7 @@
 CC=gcc
 FLAGS = -Wall -g
 
+
 #make all
 all: stringProg library
 
